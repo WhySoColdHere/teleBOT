@@ -3,16 +3,14 @@ require('dotenv').config()
 const helpComm = require('./commHelp')
 const pupee = require('puppeteer')
 
+
 async function parsPart(){
     var brows = await pupee.launch({
-        'args' : [
-            '--no-sandbox',
-            '--disable-setuid-sandbox'
-        ]
+        headless: true,
+        args: ['--no-sandbox']
     })
     var page = await brows.newPage()
     await page.goto('https://www.cbr.ru/currency_base/daily/')
-
     await page.waitForTimeout(5000)
     var euVal = await page.$eval('#content > div > div > div > div.table-wrapper > div > table > tbody > tr:nth-child(13) > td:nth-child(5)',
     el => el.textContent)
@@ -21,7 +19,6 @@ async function parsPart(){
     var funtVal = await page.$eval('#content > div > div > div > div.table-wrapper > div > table > tbody > tr:nth-child(30) > td:nth-child(5)',
     el => el.textContent)
     await brows.close()
-
     MYBOT(dolVal, euVal, funtVal)
 }
 
@@ -111,7 +108,7 @@ function MYBOT(dolVal, euVal, funtVal){
         }
     })
 
-    bot.action('btn_5', async (ctx) => {
+    bot.action('btn_6', async (ctx) => {
         await ctx.answerCbQuery()
         try{
             await ctx.replyWithAudio({source: 'musBot/GhostTown.mp3'})
