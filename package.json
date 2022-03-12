@@ -1,0 +1,21 @@
+{
+  "name": "telbotproj",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node telBot.js",
+    "dev": "nodemon telBot.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "telegraf": "^4.7.0"
+
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "puppeteer": "^13.5.1"
+  }
+}
