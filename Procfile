@@ -1,1 +1,1 @@
-worker: node telBot.js
+worker: npm start
