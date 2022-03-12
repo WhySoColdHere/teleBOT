@@ -6,8 +6,10 @@ const pupee = require('puppeteer')
 
 async function parsPart(){
     var brows = await pupee.launch({
-        headless: true,
-        args: ['--no-sandbox']
+        'args' : [
+            '--no-sandbox',
+            '--disable-setuid-sandbox'
+        ]
     })
     var page = await brows.newPage()
     await page.goto('https://www.cbr.ru/currency_base/daily/')
